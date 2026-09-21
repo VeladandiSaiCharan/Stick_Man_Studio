@@ -6,29 +6,43 @@ from renderer import animations
 class DrawingTest(Scene):
     def construct(self):
 
-        # Create StickMan Studio primitives
+        # Create primitives
         circle = primitives.Circle(radius=1)
         rectangle = primitives.Rectangle(width=3, height=1.5)
-        line = primitives.Line(LEFT * 2, RIGHT * 2)
         text = primitives.Text("StickMan Studio")
 
         # Position objects
-        circle.object.shift(UP * 1.5)
-        rectangle.object.shift(DOWN * 1.5)
-        text.object.shift(UP * 3)
+        circle.object.shift(LEFT * 3)
+        rectangle.object.shift(RIGHT * 2)
+        text.object.shift(UP * 2.5)
 
-        # Create animations using StickMan Studio's animation layer
+        # Create objects
         self.play(animations.create(circle))
         self.play(animations.create(rectangle))
-        self.play(animations.create(line))
         self.play(animations.write(text))
+
+        self.wait(1)
+
+        # Move the circle
+        self.play(
+            animations.move(circle, RIGHT * 3)
+        )
+
+        # Scale the rectangle
+        self.play(
+            animations.scale(rectangle, 1.5)
+        )
+
+        # Rotate the rectangle
+        self.play(
+            animations.rotate(rectangle, PI / 2)
+        )
 
         self.wait(2)
 
-        # Test fade out
+        # Fade everything out
         self.play(animations.fade_out(circle))
         self.play(animations.fade_out(rectangle))
-        self.play(animations.fade_out(line))
         self.play(animations.fade_out(text))
 
         self.wait(1)

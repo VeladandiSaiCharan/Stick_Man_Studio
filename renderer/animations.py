@@ -20,3 +20,15 @@ def fade_out(obj):
 
 def write(obj):
     return Write(obj.object)
+
+
+def move(obj, direction):
+    return obj.object.animate.shift(direction)
+
+
+def scale(obj, factor):
+    return obj.object.animate.scale(factor)
+
+
+def rotate(obj, angle):
+    return obj.object.animate.rotate(angle)
