@@ -1,0 +1,5 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/StickMan Studio/media/videos/layout_camera_test/480p15/partial_movie_files/LayoutCameraTest/2118183852_1398115639_223132457.mp4'
+file 'file:D:/StickMan Studio/media/videos/layout_camera_test/480p15/partial_movie_files/LayoutCameraTest/366519484_1179452991_3892177984.mp4'
+file 'file:D:/StickMan Studio/media/videos/layout_camera_test/480p15/partial_movie_files/LayoutCameraTest/366519484_2323379792_2035905455.mp4'
+file 'file:D:/StickMan Studio/media/videos/layout_camera_test/480p15/partial_movie_files/LayoutCameraTest/366519484_2645707024_2286139951.mp4'
