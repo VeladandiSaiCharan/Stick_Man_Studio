@@ -50,3 +50,17 @@ class StickMan:
             self.left_leg,
             self.right_leg,
         ]
+
+    def move_to(self, position):
+        """Moves the entire StickMan to a position."""
+
+        for part in self.get_parts():
+            part.object.move_to(
+                part.object.get_center() + position
+            )
+
+    def shift(self, direction):
+        """Shifts the entire in a Direction based on the requirement"""
+
+        for part in self.get_parts():
+            part.object.shift(direction)
