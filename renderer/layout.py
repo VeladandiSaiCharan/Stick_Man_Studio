@@ -10,6 +10,23 @@ from manim import (
     DR,
 )
 
+class VideoFormat:
+    """Video formats supported by StickMan Studio."""
+
+    YOUTUBE = {
+        "name": "youtube",
+        "width": 16,
+        "height": 9,
+        "aspect_ratio": 16 / 9,
+    }
+
+    SHORT = {
+        "name": "short",
+        "width": 9,
+        "height": 16,
+        "aspect_ratio": 9 / 16,
+    }
+
 
 class Layout:
     """This is used to provide standard positions for the objects in StickMan Studio"""
@@ -17,6 +34,26 @@ class Layout:
     @staticmethod
     def center():
         return ORIGIN
+
+    @staticmethod
+    def get_format(video_format):
+        """Return the selected video format."""
+
+        if video_format == "youtube":
+            return VideoFormat.YOUTUBE
+
+        if video_format == "short":
+            return VideoFormat.SHORT
+
+        raise ValueError(
+            f"Unknown video format: {video_format}"
+        )
+
+    @staticmethod
+    def format_name(video_format):
+        """Return the name of the selected video format."""
+
+        return Layout.get_format(video_format)["name"]
 
     @staticmethod
     def top():
