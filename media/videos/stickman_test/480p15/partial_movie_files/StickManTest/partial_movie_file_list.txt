@@ -1,0 +1,8 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/StickMan Studio/media/videos/stickman_test/480p15/partial_movie_files/StickManTest/2118183852_3232023640_223132457.mp4'
+file 'file:D:/StickMan Studio/media/videos/stickman_test/480p15/partial_movie_files/StickManTest/366519484_2726683753_2050420854.mp4'
+file 'file:D:/StickMan Studio/media/videos/stickman_test/480p15/partial_movie_files/StickManTest/366519484_167834631_2082895697.mp4'
+file 'file:D:/StickMan Studio/media/videos/stickman_test/480p15/partial_movie_files/StickManTest/366519484_3077126376_51194483.mp4'
+file 'file:D:/StickMan Studio/media/videos/stickman_test/480p15/partial_movie_files/StickManTest/366519484_2035976086_1190028558.mp4'
+file 'file:D:/StickMan Studio/media/videos/stickman_test/480p15/partial_movie_files/StickManTest/366519484_2485044892_10036042.mp4'
+file 'file:D:/StickMan Studio/media/videos/stickman_test/480p15/partial_movie_files/StickManTest/366519484_2645707024_1039059056.mp4'
