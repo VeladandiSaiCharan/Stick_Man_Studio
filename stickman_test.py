@@ -8,10 +8,7 @@ class StickManTest(Scene):
 
         stickman = StickMan()
 
-        #Puts stickman on the left
-        stickman.shift(LEFT * 4)
-
-        #Create the stickman
+        # Create the StickMan
         self.play(
             *[
                 Create(part.object)
@@ -21,18 +18,16 @@ class StickManTest(Scene):
 
         self.wait(1)
 
-        #Move stickman towards center
+        # Raise right arm
         self.play(
-            *stickman.animate_shift(RIGHT * 4)
+            stickman.animate_raise_right_arm()
         )
 
-        self.wait(2)
+        self.wait(1)
 
+        # Lower right arm
         self.play(
-            stickman.right_arm.object.animate.rotate(
-                PI / 4,
-                about_point=stickman.right_arm.object.get_start()
-            )
+            stickman.animate_lower_right_arm()
         )
 
         self.wait(2)

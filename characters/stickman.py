@@ -1,4 +1,4 @@
-from manim import UP
+from manim import UP, PI
 from renderer.primitives import Circle, Line
 
 
@@ -72,3 +72,18 @@ class StickMan:
             part.object.animate.shift(direction)
             for part in self.get_parts()
         ]
+
+    def animate_raise_right_arm(self):
+        """Return an animation that raises the right arm."""
+
+        return self.right_arm.object.animate.rotate(
+            PI / 4,
+            about_point=self.right_arm.object.get_start()
+        )
+
+    def animate_lower_right_arm(self):
+
+        return self.right_arm.object.animate.rotate(
+            -PI / 4,
+            about_point=self.right_arm.object.get_start()
+        )
