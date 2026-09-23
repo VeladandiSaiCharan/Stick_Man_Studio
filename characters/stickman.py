@@ -64,3 +64,11 @@ class StickMan:
 
         for part in self.get_parts():
             part.object.shift(direction)
+
+    def animate_shift(self, direction):
+        """Returns animations to shift the entire StickMan"""
+
+        return [
+            part.object.animate.shift(direction)
+            for part in self.get_parts()
+        ]

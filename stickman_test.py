@@ -8,27 +8,31 @@ class StickManTest(Scene):
 
         stickman = StickMan()
 
-        for part in stickman.get_parts():
-            self.play(Create(part.object))
+        #Puts stickman on the left
+        stickman.shift(LEFT * 4)
 
-        self.wait(1)
-
-        #Moves the stickman to the left 
+        #Create the stickman
         self.play(
             *[
-                part.object.animate.shift(LEFT * 2)
+                Create(part.object)
                 for part in stickman.get_parts()
             ]
         )
 
         self.wait(1)
 
-        #Moves the stickman to right
+        #Move stickman towards center
         self.play(
-            *[
-                part.object.animate.shift(RIGHT * 4)
-                for part in stickman.get_parts()
-            ]
+            *stickman.animate_shift(RIGHT * 4)
+        )
+
+        self.wait(2)
+
+        self.play(
+            stickman.right_arm.object.animate.rotate(
+                PI / 4,
+                about_point=stickman.right_arm.object.get_start()
+            )
         )
 
         self.wait(2)
