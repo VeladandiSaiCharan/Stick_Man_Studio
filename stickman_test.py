@@ -8,12 +8,20 @@ class StickManTest(Scene):
 
         stickman = StickMan()
 
+        stickman.shift(LEFT * 4)
+
         # Create the StickMan
         self.play(
             *[
                 Create(part.object)
                 for part in stickman.get_parts()
             ]
+        )
+
+        self.wait(1)
+
+        self.play(
+            *stickman.animate_shift(RIGHT * 4)
         )
 
         self.wait(1)
@@ -42,6 +50,12 @@ class StickManTest(Scene):
         #Head Movement
         self.play(
             stickman.animate_head_nod()
+        )
+
+        self.wait(1)
+
+        self.play(
+            *stickman.animate_shift(RIGHT * 2)
         )
 
         self.wait(2)
