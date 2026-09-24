@@ -30,4 +30,11 @@ class StickManTest(Scene):
             stickman.animate_lower_right_arm()
         )
 
+        self.wait(1)
+
+        #Points right arm 
+        self.play(
+            stickman.animate_point_right()
+        )
+
         self.wait(2)

@@ -87,3 +87,11 @@ class StickMan:
             -PI / 4,
             about_point=self.right_arm.object.get_start()
         )
+
+    def animate_point_right(self):
+        """This renders an animation that move the right arm into a pointing postion"""
+
+        return self.right_arm.object.animate.rotate(
+            -PI / 4,
+            about_point=self.right_arm.object.get_start()
+        )
