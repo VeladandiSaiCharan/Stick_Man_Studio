@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/StickMan Studio/media/videos/scene_composition_test/480p15/partial_movie_files/SceneCompositionTest/2118183852_3547508090_223132457.mp4'
+file 'file:D:/StickMan Studio/media/videos/scene_composition_test/480p15/partial_movie_files/SceneCompositionTest/366519484_3394271639_2334289295.mp4'
+file 'file:D:/StickMan Studio/media/videos/scene_composition_test/480p15/partial_movie_files/SceneCompositionTest/366519484_2928117802_1333264915.mp4'
+file 'file:D:/StickMan Studio/media/videos/scene_composition_test/480p15/partial_movie_files/SceneCompositionTest/366519484_2645707024_900894942.mp4'
+file 'file:D:/StickMan Studio/media/videos/scene_composition_test/480p15/partial_movie_files/SceneCompositionTest/366519484_2978980997_1462066292.mp4'
+file 'file:D:/StickMan Studio/media/videos/scene_composition_test/480p15/partial_movie_files/SceneCompositionTest/366519484_2645707024_3474983116.mp4'
