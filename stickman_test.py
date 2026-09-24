@@ -37,4 +37,11 @@ class StickManTest(Scene):
             stickman.animate_point_right()
         )
 
+        self.wait(1)
+
+        #Head Movement
+        self.play(
+            stickman.animate_head_nod()
+        )
+
         self.wait(2)

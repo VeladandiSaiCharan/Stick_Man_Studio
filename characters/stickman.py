@@ -1,4 +1,4 @@
-from manim import UP, PI
+from manim import UP, DOWN, PI
 from renderer.primitives import Circle, Line
 
 
@@ -95,3 +95,8 @@ class StickMan:
             -PI / 4,
             about_point=self.right_arm.object.get_start()
         )
+
+    def animate_head_nod(self):
+        """Renders animation of a simple head nod"""
+
+        return self.head.object.animate.shift(DOWN * 0.15)
