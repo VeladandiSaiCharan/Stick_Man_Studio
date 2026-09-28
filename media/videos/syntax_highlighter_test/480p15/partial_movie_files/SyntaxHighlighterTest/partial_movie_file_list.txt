@@ -1,0 +1,9 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/StickMan Studio/media/videos/syntax_highlighter_test/480p15/partial_movie_files/SyntaxHighlighterTest/2118183852_1065622807_223132457.mp4'
+file 'file:D:/StickMan Studio/media/videos/syntax_highlighter_test/480p15/partial_movie_files/SyntaxHighlighterTest/366519484_4203529730_997219375.mp4'
+file 'file:D:/StickMan Studio/media/videos/syntax_highlighter_test/480p15/partial_movie_files/SyntaxHighlighterTest/366519484_580216463_2982450828.mp4'
+file 'file:D:/StickMan Studio/media/videos/syntax_highlighter_test/480p15/partial_movie_files/SyntaxHighlighterTest/366519484_3576178401_1826167968.mp4'
+file 'file:D:/StickMan Studio/media/videos/syntax_highlighter_test/480p15/partial_movie_files/SyntaxHighlighterTest/366519484_4081513093_3594117133.mp4'
+file 'file:D:/StickMan Studio/media/videos/syntax_highlighter_test/480p15/partial_movie_files/SyntaxHighlighterTest/366519484_1119394117_698460576.mp4'
+file 'file:D:/StickMan Studio/media/videos/syntax_highlighter_test/480p15/partial_movie_files/SyntaxHighlighterTest/366519484_3858760722_2502309251.mp4'
+file 'file:D:/StickMan Studio/media/videos/syntax_highlighter_test/480p15/partial_movie_files/SyntaxHighlighterTest/366519484_4176908490_4118046399.mp4'

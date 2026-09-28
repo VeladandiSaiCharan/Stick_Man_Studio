@@ -1,120 +1,107 @@
 from manim import VGroup, Rectangle, Text, DOWN, RIGHT
 
+from visualizers.syntax_highlighter import SyntaxHighlighter
 
 class CodePanel:
+
     """
-    Basic code panel for displaying source code
-    inside a StickMan Studio scene.
+    Code panel is used to display the source code inside 
+    stickman studio scenes.
     """
 
     def __init__(
-        self,
-        code,
-        width=6,
-        height=4,
-        title="Code"
+            self,
+            code,
+            width = 7,
+            height = 4.5,
+            title = "Code",
+            syntax_highlight = False
     ):
 
         self.code = code
         self.width = width
         self.height = height
         self.title = title
+        self.syntax_highlight = syntax_highlight
 
-        # ---------------------------------------------
-        # Create panel background
-        # ---------------------------------------------
+        #background for panel
 
         self.background = Rectangle(
-            width=self.width,
-            height=self.height
+            width = self.width,
+            height = self.height
         )
 
-        # ---------------------------------------------
-        # Create and position the title
-        # ---------------------------------------------
+        #Panel title
 
         self.title_text = Text(
             self.title,
-            font_size=28
+            font_size = 28
         )
 
         self.title_text.move_to(
             self.background.get_top() + DOWN * 0.35
         )
 
-        # ---------------------------------------------
-        # Create code lines
-        # ---------------------------------------------
+        #Code
 
-        self.lines = []
-
-        for raw_line in self.code.split("\n"):
-
-            # Count indentation before removing it.
-            indentation = len(raw_line) - len(raw_line.lstrip(" "))
-
-            # Remove leading whitespace because Manim Text
-            # does not reliably use it for visual indentation.
-            content = raw_line.strip()
-
-            # Create a small invisible spacer for blank lines.
-            if content == "":
-                code_line = Text(
-                    " ",
-                    font="DejaVu Sans Mono",
-                    font_size=24
-                )
-            else:
-                code_line = Text(
-                    content,
-                    font="DejaVu Sans Mono",
-                    font_size=24
-                )
-
-            # Store indentation information.
-            code_line.indentation = indentation
-
-            self.lines.append(code_line)
-
-        # ---------------------------------------------
-        # Position code lines
-        # ---------------------------------------------
-
-        self.code_group = VGroup()
-
-        # X position for the beginning of the code area.
-        code_left = self.background.get_left() + RIGHT * 0.35
-
-        # Starting Y position below the title.
-        current_y = self.title_text.get_bottom()[1] - 0.35
-
-        # Distance between code lines.
-        line_spacing = 0.45
-
-        for line in self.lines:
-
-            # Convert spaces into a visible indentation amount.
-            indent_offset = (
-                line.indentation / 4
-            ) * 0.3
-
-            # Position the line explicitly.
-            line.move_to(
-                [
-                    code_left[0] + indent_offset + line.width / 2,
-                    current_y,
-                    0
-                ]
+        if self.syntax_highlight:
+            self.highlighter = SyntaxHighlighter(
+                font_size = 24
             )
 
-            self.code_group.add(line)
+            code_start_x = (
+                self.background.get_left()[0] + 0.35
+            )
 
-            # Move downward for the next line.
-            current_y -= line_spacing
+            code_start_y = (
+                self.title_text.get_bottom()[1] - 0.35
+            )
 
-        # ---------------------------------------------
-        # Group complete panel
-        # ---------------------------------------------
+            self.lines = self.highlighter.highlight(
+                code,
+                start_x = code_start_x,
+                start_y = code_start_y
+            )
+
+            self.code_group = VGroup(
+                *self.lines
+            )
+
+        else:
+
+            self.highlighter = None
+            self.lines = []
+
+            for raw_line in code.split("\n"):
+                if raw_line.strip() == "":
+                    content = " "
+                else: 
+                    content = raw_line
+
+                code_line = Text(
+                    content,
+                    font = "DejaVu Sans Mono",
+                    font_size=2
+                )
+
+                self.lines.append(code_line)
+
+            self.code_group = VGroup(
+                *self.lines
+            )
+
+            self.code_group.arrange(
+                DOWN,
+                aligned_edge = RIGHT,
+                buff = 0.15
+            )
+
+            self.code_group.align_to(
+                self.background,
+                RIGHT
+            )
+
+        #Group the complete Panel together
 
         self.group = VGroup(
             self.background,
@@ -122,10 +109,9 @@ class CodePanel:
             self.code_group
         )
 
+    #Return panel parts
+
     def get_parts(self):
-        """
-        Return all visual components of the code panel.
-        """
 
         return [
             self.background,
@@ -133,16 +119,12 @@ class CodePanel:
             self.code_group
         ]
 
-    def get_lines(self):
-        """
-        Return individual code lines.
-        """
+    #Return individual code lines
 
+    def get_lines(self):
         return self.lines
 
-    def get_group(self):
-        """
-        Return the complete CodePanel as a VGroup.
-        """
+    #Return complete panel 
 
+    def get_group(self):
         return self.group
