@@ -6,29 +6,21 @@ class CodePanelTest(Scene):
 
     def construct(self):
 
-        # ---------------------------------------------
-        # Code to display
-        # ---------------------------------------------
-
         code = """def greet(name):
-    print("Hello", name)
+    message = "Hello"
+    number = 10
+    print(message, name, number)
 
+# Call the function
 greet("World")"""
-
-        # ---------------------------------------------
-        # Create CodePanel
-        # ---------------------------------------------
 
         panel = CodePanel(
             code,
             width=7,
             height=4.5,
-            title="Python Example"
+            title="Python Example",
+            syntax_highlight=True
         )
-
-        # ---------------------------------------------
-        # Display the panel
-        # ---------------------------------------------
 
         self.play(
             Create(panel.background)
@@ -42,4 +34,4 @@ greet("World")"""
             Write(panel.code_group)
         )
 
-        self.wait(2)
+        self.wait(3)
