@@ -34,4 +34,38 @@ greet("World")"""
             Write(panel.code_group)
         )
 
-        self.wait(3)
+        self.wait(1)
+
+        #Highlight line 2
+
+        highlight = panel.highlight_line(2)
+
+        self.play(
+            FadeIn(highlight)
+        )
+
+        self.wait(2)
+
+        #Move highlight to line 4
+
+        old_highlight = highlight
+
+        new_highlight, self.animations = (
+            panel.animate_change_highlight(4)
+        )
+
+        self.play(
+            *self.animations
+        )
+
+        self.wait(2)
+
+        #Remove highlight
+
+        self.play(
+            FadeOut(new_highlight)
+        )
+
+        panel.clear_highlight()
+
+        self.wait(2)
