@@ -22,10 +22,8 @@ class TerminalPanelTest(Scene):
         self.wait(1)
 
         output = terminal.set_output(
-            """10
-            20
-            30
-            Total: 60"""
+            """$ python program.py
+        Total: 60"""
         )
 
         output_animations = terminal.get_output_animations()
