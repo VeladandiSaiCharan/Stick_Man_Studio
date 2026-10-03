@@ -5,6 +5,7 @@ from manim import (
     SurroundingRectangle,
     FadeIn,
     FadeOut,
+    AddTextLetterByLetter,
     Create,
     DOWN,
     RIGHT,
@@ -261,38 +262,25 @@ class CodePanel:
     #Get typing animations
 
     def get_typing_animations(self, characters_per_second=15):
-        """
-        Return animations that reveal the code token by token
-        in source order.
-
-        characters_per_second controls how quickly the code appears. 
-        """
-
         if characters_per_second <= 0:
-            raise ValueError(
-                "characters_per_second must be greater than 0."
-            )
-
+            raise ValueError("characters_per_second must be greater than 0.")
         animations = []
 
         for line_group in self.lines:
             for token_mobject in line_group:
 
-                character_count = len(
-                    token_mobject.text
+                character_count = len(token_mobject.text)
+
+                if character_count == 0:
+                    continue
+
+                time_per_character = 1 / characters_per_second
+
+                animation = AddTextLetterByLetter(
+                    token_mobject,
+                    time_per_char=time_per_character
                 )
 
-                run_time = max(
-                    0.05,
-                    character_count
-                    / characters_per_second
-                )
-
-                animations.append(
-                    FadeIn(
-                        token_mobject,
-                        run_time=run_time
-                    )
-                )
+                animations.append(animation)
 
         return animations

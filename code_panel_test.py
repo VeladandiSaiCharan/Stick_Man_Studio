@@ -8,20 +8,25 @@ class CodePanelTest(Scene):
 
         #Example Python code
 
-        code = """def greet(name):
-    message = "Hello"
-    number = 10
-    print(message, name, number)
+        code = """def calculate_sum(numbers):
+    total = 0
 
-# Call the function
-greet("World")"""
+    for number in numbers:
+        total = total + number
+
+    print("Total:", total)
+    return total
+
+values = [10, 20, 30]
+result = calculate_sum(values)
+"""
 
         #Create Code panel
 
         panel = CodePanel(
             code,
             width=7,
-            height=4.5,
+            height=6.0,
             title="Python Example",
             syntax_highlight=True
         )
