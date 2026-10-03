@@ -1,4 +1,4 @@
-from manim import VGroup, Rectangle, Text, LEFT, RIGHT, DOWN
+from manim import VGroup, Rectangle, Text, LEFT, RIGHT, DOWN, Write
 
 class TerminalPanel:
 
@@ -92,3 +92,13 @@ class TerminalPanel:
         )
 
         return self.output_group
+
+    def get_output_animations(self):
+        animations = []
+
+        for line in self.output_lines:
+            animations.append(
+                Write(line)
+            )
+
+        return animations

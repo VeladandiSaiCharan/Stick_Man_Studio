@@ -28,8 +28,8 @@ class TerminalPanelTest(Scene):
             Total: 60"""
         )
 
-        self.play(
-            Write(output)
-        )
+        output_animations = terminal.get_output_animations()
 
+        for animation in output_animations:
+            self.play(animation)
         self.wait(2)
