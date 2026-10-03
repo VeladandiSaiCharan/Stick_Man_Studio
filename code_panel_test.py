@@ -6,6 +6,8 @@ class CodePanelTest(Scene):
 
     def construct(self):
 
+        #Example Python code
+
         code = """def greet(name):
     message = "Hello"
     number = 10
@@ -13,6 +15,8 @@ class CodePanelTest(Scene):
 
 # Call the function
 greet("World")"""
+
+        #Create Code panel
 
         panel = CodePanel(
             code,
@@ -22,50 +26,32 @@ greet("World")"""
             syntax_highlight=True
         )
 
+        #Show Panel background
+
         self.play(
             Create(panel.background)
         )
+
+        #Show title
 
         self.play(
             Write(panel.title_text)
         )
 
-        self.play(
-            Write(panel.code_group)
-        )
-
         self.wait(1)
 
-        #Highlight line 2
+        #Get typing animations
 
-        highlight = panel.highlight_line(2)
-
-        self.play(
-            FadeIn(highlight)
+        typing_animations = (
+            panel.get_typing_animations(
+                characters_per_second=15
+            )
         )
 
-        self.wait(2)
+        #Type the code
 
-        #Move highlight to line 4
+        for animation in typing_animations:
 
-        old_highlight = highlight
-
-        new_highlight, self.animations = (
-            panel.animate_change_highlight(4)
-        )
-
-        self.play(
-            *self.animations
-        )
-
-        self.wait(2)
-
-        #Remove highlight
-
-        self.play(
-            FadeOut(new_highlight)
-        )
-
-        panel.clear_highlight()
+            self.play(animation)
 
         self.wait(2)
