@@ -5,44 +5,32 @@ class ArrayVisualizerTest(Scene):
 
     def construct(self):
 
-        array = ArrayVisualizer(
+        small_array = ArrayVisualizer(
+            [5, 10, 15]
+        )
+
+        normal_array = ArrayVisualizer(
             [10, 20, 30, 40, 50]
         )
 
-        self.play(
-            Create(array.get_group())
+        different_values = ArrayVisualizer(
+            [42, 7, 100, 3, 25]
         )
 
-        self.wait(1)
-
-        highlight = array.highlight_element(0)
+        small_array.get_group().shift(UP * 2)
+        normal_array.get_group().shift(UP * 0)
+        different_values.get_group().shift(DOWN * 2)
 
         self.play(
-            Create(highlight)
+            Create(small_array.get_group())
         )
 
-        self.wait(1)
-
         self.play(
-            array.animate_highlight(1)
+            Create(normal_array.get_group())
         )
 
-        self.wait(1)
-
         self.play(
-            array.animate_highlight(2)
-        )
-
-        self.wait(1)
-
-        self.play(
-            array.animate_highlight(3)
-        )
-
-        self.wait(1)
-
-        self.play(
-            array.animate_highlight(4)
+            Create(different_values.get_group())
         )
 
         self.wait(2)
