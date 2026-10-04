@@ -142,3 +142,29 @@ class ArrayVisualizer:
         self.highlighted_index = index
 
         return animation
+
+    def set_value(self, index, value):
+        if index < 0 or index >= len(self.values):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        self.values[index] = value
+        self.values_text[index].become(
+            Text(
+                str(value),
+                font_size=self.font_size
+            ).move_to(
+                self.cells[index].get_center()
+            )
+        )
+
+        return self.values_text[index]
+
+    def get_value(self, index):
+        if index < 0 or index >= len(self.values):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        return self.values[index]
