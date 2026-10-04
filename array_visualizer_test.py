@@ -25,4 +25,8 @@ class ArrayVisualizerTest(Scene):
         #Change value
         array.set_value(2, 99)
 
+        self.wait(1)
+
+        array.swap(1,2)
+
         self.wait(2)

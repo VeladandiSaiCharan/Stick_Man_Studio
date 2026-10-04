@@ -168,3 +168,42 @@ class ArrayVisualizer:
             )
 
         return self.values[index]
+
+    def swap(self, index1, index2):
+        if index1 < 0 or index1 >= len(self.values):
+            raise IndexError(
+                f"Array index {index1} is out of range."
+            )
+
+        if index2 < 0 or index2 >= len(self.values):
+            raise IndexError(
+                f"Array index {index2} is out of range."
+            )
+
+        self.values[index1], self.values[index2] = (
+            self.values[index2],
+            self.values[index1]
+        )
+
+        self.values_text[index1].become(
+            Text(
+                str(self.values[index1]),
+                font_size=self.font_size
+            ).move_to(
+                self.cells[index1].get_center()
+            )
+        )
+
+        self.values_text[index2].become(
+            Text(
+                str(self.values[index2]),
+                font_size=self.font_size
+            ).move_to(
+                self.cells[index2].get_center()
+            )
+        )
+
+        return (
+            self.values_text[index1],
+            self.values_text[index2]
+        )
