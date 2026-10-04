@@ -7,6 +7,9 @@ from manim import (
     RIGHT,
     YELLOW,
     Create,
+    FadeIn,
+    FadeOut,
+    AnimationGroup,
 )
 
 
@@ -19,7 +22,8 @@ class ArrayVisualizer:
         cell_height=0.9,
         font_size=24
     ):
-        self.values = values
+        self.values = list(values)
+
         self.cell_width = cell_width
         self.cell_height = cell_height
         self.font_size = font_size
@@ -27,6 +31,7 @@ class ArrayVisualizer:
         self.cells = []
         self.values_text = []
         self.indices_text = []
+
         self.highlight = None
         self.highlighted_index = None
 
@@ -34,7 +39,20 @@ class ArrayVisualizer:
 
         self._create_array()
 
+    # --------------------------------------------------
+    # ARRAY CREATION
+    # --------------------------------------------------
+
     def _create_array(self):
+        self._rebuild_array()
+
+    def _rebuild_array(self):
+
+        self.cells = []
+        self.values_text = []
+        self.indices_text = []
+
+        self.group = VGroup()
 
         for index, value in enumerate(self.values):
 
@@ -80,6 +98,10 @@ class ArrayVisualizer:
             buff=0
         )
 
+    # --------------------------------------------------
+    # ACCESS METHODS
+    # --------------------------------------------------
+
     def get_group(self):
         return self.group
 
@@ -92,76 +114,12 @@ class ArrayVisualizer:
     def get_indices(self):
         return self.indices_text
 
-    def create_highlight(self, index):
-        if index < 0 or index >= len(self.cells):
-            raise IndexError(
-                f"Array index {index} is out of range."
-            )
-
-        highlight = SurroundingRectangle(
-            self.cells[index],
-            color=YELLOW,
-            buff=0.08
-        )
-
-        return highlight
-
-    def highlight_element(self, index):
-        highlight = self.create_highlight(index)
-
-        self.highlight = highlight
-        self.highlighted_index = index
-
-        return highlight
-
-    def clear_highlight(self):
-        self.highlight = None
-        self.highlighted_index = None
-
-    def get_highlight(self):
-        return self.highlight
-
-    def animate_highlight(self, index):
-        if index < 0 or index >= len(self.cells):
-            raise IndexError(
-                f"Array index {index} is out of range."
-            )
-
-        new_highlight = self.create_highlight(index)
-
-        if self.highlight is None:
-            self.highlight = new_highlight
-            self.highlighted_index = index
-
-            return Create(new_highlight)
-
-        animation = self.highlight.animate.move_to(
-            new_highlight.get_center()
-        )
-
-        self.highlighted_index = index
-
-        return animation
-
-    def set_value(self, index, value):
-        if index < 0 or index >= len(self.values):
-            raise IndexError(
-                f"Array index {index} is out of range."
-            )
-
-        self.values[index] = value
-        self.values_text[index].become(
-            Text(
-                str(value),
-                font_size=self.font_size
-            ).move_to(
-                self.cells[index].get_center()
-            )
-        )
-
-        return self.values_text[index]
+    # --------------------------------------------------
+    # VALUE ACCESS
+    # --------------------------------------------------
 
     def get_value(self, index):
+
         if index < 0 or index >= len(self.values):
             raise IndexError(
                 f"Array index {index} is out of range."
@@ -169,7 +127,62 @@ class ArrayVisualizer:
 
         return self.values[index]
 
+    # --------------------------------------------------
+    # VALUE UPDATE
+    # --------------------------------------------------
+
+    def set_value(self, index, value):
+
+        if index < 0 or index >= len(self.values):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        self.values[index] = value
+
+        new_text = Text(
+            str(value),
+            font_size=self.font_size
+        ).move_to(
+            self.cells[index].get_center()
+        )
+
+        self.values_text[index].become(
+            new_text
+        )
+
+        return self.values_text[index]
+
+    # --------------------------------------------------
+    # ANIMATED VALUE UPDATE
+    # --------------------------------------------------
+
+    def animate_set_value(self, index, value):
+
+        if index < 0 or index >= len(self.values):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        new_text = Text(
+            str(value),
+            font_size=self.font_size
+        ).move_to(
+            self.cells[index].get_center()
+        )
+
+        self.values[index] = value
+
+        return self.values_text[index].animate.become(
+            new_text
+        )
+
+    # --------------------------------------------------
+    # SWAP
+    # --------------------------------------------------
+
     def swap(self, index1, index2):
+
         if index1 < 0 or index1 >= len(self.values):
             raise IndexError(
                 f"Array index {index1} is out of range."
@@ -207,3 +220,135 @@ class ArrayVisualizer:
             self.values_text[index1],
             self.values_text[index2]
         )
+
+    # --------------------------------------------------
+    # ANIMATED SWAP
+    # --------------------------------------------------
+
+    def animate_swap(self, index1, index2):
+
+        if index1 < 0 or index1 >= len(self.values):
+            raise IndexError(
+                f"Array index {index1} is out of range."
+            )
+
+        if index2 < 0 or index2 >= len(self.values):
+            raise IndexError(
+                f"Array index {index2} is out of range."
+            )
+
+        first = self.values_text[index1]
+        second = self.values_text[index2]
+
+        first_position = first.get_center()
+        second_position = second.get_center()
+
+        self.values[index1], self.values[index2] = (
+            self.values[index2],
+            self.values[index1]
+        )
+
+        return AnimationGroup(
+            first.animate.move_to(second_position),
+            second.animate.move_to(first_position)
+        )
+
+    # --------------------------------------------------
+    # INSERT
+    # --------------------------------------------------
+
+    def insert(self, index, value):
+
+        if index < 0 or index > len(self.values):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        self.values.insert(
+            index,
+            value
+        )
+
+        self._rebuild_array()
+
+        return self.group
+
+    # --------------------------------------------------
+    # REMOVE
+    # --------------------------------------------------
+
+    def remove(self, index):
+
+        if index < 0 or index >= len(self.values):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        removed_value = self.values.pop(index)
+
+        self._rebuild_array()
+
+        return removed_value
+
+    # --------------------------------------------------
+    # HIGHLIGHT
+    # --------------------------------------------------
+
+    def create_highlight(self, index):
+
+        if index < 0 or index >= len(self.cells):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        return SurroundingRectangle(
+            self.cells[index],
+            color=YELLOW,
+            buff=0.08
+        )
+
+    def highlight_element(self, index):
+
+        highlight = self.create_highlight(index)
+
+        self.highlight = highlight
+        self.highlighted_index = index
+
+        return highlight
+
+    def clear_highlight(self):
+
+        self.highlight = None
+        self.highlighted_index = None
+
+    def get_highlight(self):
+
+        return self.highlight
+
+    # --------------------------------------------------
+    # ANIMATED HIGHLIGHT MOVEMENT
+    # --------------------------------------------------
+
+    def animate_highlight(self, index):
+
+        if index < 0 or index >= len(self.cells):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        new_highlight = self.create_highlight(index)
+
+        if self.highlight is None:
+
+            self.highlight = new_highlight
+            self.highlighted_index = index
+
+            return Create(new_highlight)
+
+        animation = self.highlight.animate.move_to(
+            new_highlight.get_center()
+        )
+
+        self.highlighted_index = index
+
+        return animation
