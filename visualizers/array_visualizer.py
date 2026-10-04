@@ -6,6 +6,7 @@ from manim import (
     DOWN,
     RIGHT,
     YELLOW,
+    Create,
 )
 
 
@@ -119,3 +120,25 @@ class ArrayVisualizer:
 
     def get_highlight(self):
         return self.highlight
+
+    def animate_highlight(self, index):
+        if index < 0 or index >= len(self.cells):
+            raise IndexError(
+                f"Array index {index} is out of range."
+            )
+
+        new_highlight = self.create_highlight(index)
+
+        if self.highlight is None:
+            self.highlight = new_highlight
+            self.highlighted_index = index
+
+            return Create(new_highlight)
+
+        animation = self.highlight.animate.move_to(
+            new_highlight.get_center()
+        )
+
+        self.highlighted_index = index
+
+        return animation

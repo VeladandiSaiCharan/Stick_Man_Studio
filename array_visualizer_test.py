@@ -15,11 +15,34 @@ class ArrayVisualizerTest(Scene):
 
         self.wait(1)
 
-        highlight = array.highlight_element(2)
+        highlight = array.highlight_element(0)
 
         self.play(
             Create(highlight)
         )
 
+        self.wait(1)
+
+        self.play(
+            array.animate_highlight(1)
+        )
+
+        self.wait(1)
+
+        self.play(
+            array.animate_highlight(2)
+        )
+
+        self.wait(1)
+
+        self.play(
+            array.animate_highlight(3)
+        )
+
+        self.wait(1)
+
+        self.play(
+            array.animate_highlight(4)
+        )
+
         self.wait(2)
-        
