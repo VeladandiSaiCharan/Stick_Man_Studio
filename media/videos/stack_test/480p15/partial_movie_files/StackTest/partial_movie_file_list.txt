@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/2118183852_3581464153_223132457.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_2645707024_3939790820.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_847192958_3355824199.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_3765310830_752053023.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_2645707024_239935219.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_4087037746_3172930920.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_2119213706_3673935869.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_2645707024_4174207878.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_2935517191_788818956.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_2645707024_2759120862.mp4'
+file 'file:D:/StickMan Studio/media/videos/stack_test/480p15/partial_movie_files/StackTest/366519484_2645707024_3972478395.mp4'
