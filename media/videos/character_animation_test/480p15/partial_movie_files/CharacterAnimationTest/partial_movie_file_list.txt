@@ -1,0 +1,13 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/2118183852_474025292_223132457.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_847192958_598269100.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_3387673997_1240500302.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_3880968470_3909818465.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_1875791841_2136794306.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_3880968470_2073387012.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_3925516485_4045306896.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_3880968470_1665385288.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_205024576_3343726352.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_3880968470_3623970486.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_1222083795_783560319.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_animation_test/480p15/partial_movie_files/CharacterAnimationTest/366519484_2645707024_2613715226.mp4'
