@@ -16,3 +16,6 @@ class Character:
 
     def shift(self, direction):
         self.group.shift(direction)
+
+    def scale(self, factor):
+        self.group.scale(factor)

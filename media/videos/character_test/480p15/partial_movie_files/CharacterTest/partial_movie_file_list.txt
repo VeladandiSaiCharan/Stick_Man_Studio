@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/StickMan Studio/media/videos/character_test/480p15/partial_movie_files/CharacterTest/2118183852_474025292_223132457.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_test/480p15/partial_movie_files/CharacterTest/366519484_2645707024_598269100.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_test/480p15/partial_movie_files/CharacterTest/366519484_2645707024_2169975988.mp4'
