@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/2118183852_474025292_223132457.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_847192958_598269100.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_3387673997_1240500302.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_3880968470_3909818465.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_205024576_4137214879.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_3880968470_3069088575.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_3925516485_299253879.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_847192958_1884290290.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_1222083795_1714737751.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_847192958_2961845624.mp4'
+file 'file:D:/StickMan Studio/media/videos/character_integration_test/480p15/partial_movie_files/CharacterIntegrationTest/366519484_2645707024_3426196540.mp4'
