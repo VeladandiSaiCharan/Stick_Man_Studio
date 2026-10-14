@@ -1,0 +1,5 @@
+manim==0.21.0
+kokoro-onnx==0.6.1
+soundfile==0.14.0
+numpy==2.5.3
+pyttsx3==2.99

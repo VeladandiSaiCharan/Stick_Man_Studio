@@ -5,98 +5,138 @@ from audio.tts import TTSManager
 from audio.subtitles import SubtitleGenerator
 
 
-class AudioTest:
+def get_audio_duration(audio_path):
 
-    def run(self):
+    with wave.open(str(audio_path), "rb") as audio:
 
-        # =========================
-        # TEST SCRIPT
-        # =========================
+        frames = audio.getnframes()
+        sample_rate = audio.getframerate()
 
-        script = (
+        if sample_rate <= 0:
+            raise ValueError(
+                "Invalid audio sample rate."
+            )
+
+        return frames / sample_rate
+
+
+def main():
+
+    output_dir = Path("output/audio")
+
+    output_dir.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    generator = SubtitleGenerator(
+        max_words=8
+    )
+
+    tts = TTSManager(
+        backend="kokoro",
+        speed=0.95,
+        fallback_to_pyttsx3=True,
+    )
+
+    test_scripts = {
+        "Midoriya": (
             "Hello everyone! "
             "I am Midoriya. "
             "Today, we will learn about arrays. "
             "An array stores multiple values in a single variable. "
             "Each value can be accessed using its index."
-        )
+        ),
 
-        output_dir = Path("output/audio")
-        output_dir.mkdir(parents=True, exist_ok=True)
+        "Bakugo": (
+            "Wait a second! "
+            "How do we access a particular value in an array? "
+            "Is it possible to retrieve a value directly "
+            "using its index?"
+        ),
+    }
 
-        audio_path = output_dir / "speech.wav"
-        subtitle_path = output_dir / "subtitles.srt"
+    try:
 
-        # =========================
-        # GENERATE SPEECH
-        # =========================
+        for character, script in test_scripts.items():
 
-        tts = TTSManager(rate=165, volume=1.0)
+            print("\n" + "=" * 40)
+            print(f"Testing character: {character}")
+            print("=" * 40)
 
-        print("\nAvailable voices:")
-
-        for voice in tts.get_voices():
-            print(
-                f"{voice['index']}: {voice['name']}"
+            audio_path = (
+                output_dir / f"speech_{character.lower()}.wav"
             )
 
-        print("\nGenerating speech...")
+            subtitle_path = (
+                output_dir / f"subtitles_{character.lower()}.srt"
+            )
 
-        tts.generate_speech(
-            script,
-            audio_path
-        )
+            # Generate speech.
+            tts.generate_speech(
+                text=script,
+                output_path=audio_path,
+                character=character,
+            )
 
-        print("Audio generated:", audio_path)
+            # Calculate audio duration.
+            duration = get_audio_duration(
+                audio_path
+            )
 
-        # =========================
-        # CHECK AUDIO DURATION
-        # =========================
+            # Generate subtitles.
+            generator.generate_srt(
+                text=script,
+                duration=duration,
+                output_path=subtitle_path,
+            )
 
-        with wave.open(str(audio_path), "rb") as audio_file:
+            # Validate outputs.
+            if not audio_path.exists():
+                raise FileNotFoundError(
+                    f"Audio missing: {audio_path}"
+                )
 
-            frames = audio_file.getnframes()
-            sample_rate = audio_file.getframerate()
+            if not subtitle_path.exists():
+                raise FileNotFoundError(
+                    f"Subtitles missing: {subtitle_path}"
+                )
 
-            duration = frames / sample_rate
+            if audio_path.stat().st_size == 0:
+                raise RuntimeError(
+                    f"Audio is empty: {audio_path}"
+                )
 
-        print(
-            f"Audio duration: {duration:.2f} seconds"
-        )
+            if subtitle_path.stat().st_size == 0:
+                raise RuntimeError(
+                    f"Subtitles are empty: {subtitle_path}"
+                )
 
-        # =========================
-        # GENERATE SUBTITLES
-        # =========================
+            print("\nResults:")
+            print("Character:", character)
+            print("Audio:", audio_path)
+            print("Subtitles:", subtitle_path)
+            print(f"Duration: {duration:.2f} seconds")
+            print(
+                "Audio size:",
+                audio_path.stat().st_size,
+                "bytes"
+            )
+            print("Audio validation: PASSED")
+            print("Subtitle validation: PASSED")
 
-        subtitle_generator = SubtitleGenerator(
-            max_words=8
-        )
+        print("\n" + "=" * 40)
+        print("DAY 29 TEST RESULTS")
+        print("=" * 40)
+        print("Midoriya voice: TESTED")
+        print("Bakugo voice: TESTED")
+        print("Audio generation: PASSED")
+        print("Subtitle generation: PASSED")
 
-        subtitle_generator.generate_srt(
-            text=script,
-            duration=duration,
-            output_path=subtitle_path
-        )
+    finally:
 
-        print("Subtitles generated:", subtitle_path)
-
-        # =========================
-        # FINAL VERIFICATION
-        # =========================
-
-        print("\n--- Audio Test Results ---")
-
-        print("Audio exists:", audio_path.exists())
-        print("Audio size:", audio_path.stat().st_size, "bytes")
-
-        print(
-            "Subtitles exist:",
-            subtitle_path.exists()
-        )
-
-        print("Audio and subtitle generation completed!")
+        tts.close()
 
 
 if __name__ == "__main__":
-
-    AudioTest().run()
+    main()

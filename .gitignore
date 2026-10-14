@@ -20,6 +20,10 @@ temp/
 *.mp4
 *.mov
 
+# Kokoro model files
+assets/kokoro/*.onnx
+assets/kokoro/*.bin
+
 # IDE
 .vscode/
 
